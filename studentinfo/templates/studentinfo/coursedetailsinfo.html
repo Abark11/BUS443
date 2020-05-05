@@ -1,0 +1,55 @@
+﻿{% extends "studentinfo/base.html" %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1> Course Details </h1>
+        <p>Take a look at our course offerings! </p>
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Title</th>
+                <th>Course Name</th>
+                <th>Section Code</th>
+                <th>Department</th>
+                <th>Instructor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in cdata %}
+            <tr>
+                <td>{{ row.courseid }}</td>
+                <td>{{ row.coursetitle }}</td>
+                <td>{{ row.coursename }}</td>
+                <td>{{ row.coursesectioncode }}</td>
+                <td>{{ row.coursedepartment }}</td>
+                <td>{{ row.instructorfullname }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if cdata.has_previous %}
+            <a href="?page=1">&laquo;first</a>
+            <a href="?page={{ cdata.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ cdata.number }} of {{ cdata.paginator.num_pages }}
+            </span>
+            {% if cdata.has_next %}
+            <a href="?page={{ cdata.next_page_number }}">next</a>
+            <a href="?page={{ cdata.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+
+    </div>
+</div>
+
+{% endblock %}

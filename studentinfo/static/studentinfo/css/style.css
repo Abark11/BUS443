@@ -1,0 +1,26 @@
+﻿body {
+}
+
+h1 {
+    color: #E3493B;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+p {
+    color: #23B5AF;
+    font-size: 18px;
+}
+
+h2 {
+    color: #EEBA4C;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    font-family: "Arial Black", Gadget, sans-serif;
+}

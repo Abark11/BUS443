@@ -1,0 +1,66 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static 'studentinfo/css/style.css' %}" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1> Course Details </h1>
+            <p>Here are our courses: {{ name }} </p>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Major</th>
+                    <th>Year</th>
+                    <th>GPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in sdata %}
+                <tr>
+                    <td>{{ row.firstname }}</td>
+                    <td>{{ row.lastname }}</td>
+                    <td>{{ row.major }}</td>
+                    <td>{{ row.year }}</td>
+                    <td>{{ row.gpa  }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if sdata.has_previous %}
+                <a href="?page=1">&laquo;first</a>
+                <a href="?page={{ sdata.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ sdata.number }} of {{ sdata.paginator.num_pages }}
+                </span>
+                {% if sdata.has_next %}
+                <a href="?page={{ sdata.next_page_number }}">next</a>
+                <a href="?page={{ sdata.paginator.num_pages}}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+</body>
+</html>

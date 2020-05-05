@@ -1,0 +1,38 @@
+﻿{% extends "studentinfo/base.html" %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1> Student Enrollment </h1>
+        <p>Have a course in mind? Enroll here! </p>
+    </div>
+</div>
+
+<div class="container">
+    <h5>Students may enroll in up to 3 classes.</h5>
+</div>
+
+<div class="container">
+    <p>Enter student ID</p>
+    <input type="text" id="studentid" name="studentid" /><br /><br />
+    <p>Enter course ID</p>
+    <input type="text" id="courseid" name="courseid" /><br /><br />
+    <button id="btn">Submit</button>
+</div>
+
+<script>$(document).ready(function () {
+        $("#btn").click(function () {
+            $.ajax({
+                url: "{% url 'savedata' %}",
+                data: {
+                    studentid: $("#studentid").val(),
+                    courseid: $("#courseid").val()
+                },
+                success:function(){
+                    console.log("Success");
+                }
+            });
+        });
+    });</script>
+
+{% endblock %}
